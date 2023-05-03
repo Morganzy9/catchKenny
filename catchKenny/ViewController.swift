@@ -31,6 +31,11 @@ class ViewController: UIViewController {
     var kennyArr = [UIImageView]()
     
     
+//    MARK: KEY OF HIGH SCORE
+    
+    var highScoreKey = "highScore"
+    
+    
     override func viewDidLoad() {
         super.viewDidLoad()
         
@@ -42,6 +47,18 @@ class ViewController: UIViewController {
         
         scoreLabel.text = "Score: \(score)"
         
+        let storedHighScore = UserDefaults.standard.object(forKey: highScoreKey)
+        
+        if storedHighScore == nil {
+            highScore = 0
+            highScoreLabel.text = "High Score: \(highScore)"
+        }
+        
+        if let newScore = storedHighScore as? Int {
+            highScore = newScore
+            highScoreLabel.text = "High Score \(highScore )"
+        }
+ 
         kenny1.isUserInteractionEnabled = true
         kenny2.isUserInteractionEnabled = true
         kenny3.isUserInteractionEnabled = true
@@ -127,6 +144,12 @@ class ViewController: UIViewController {
             timer.invalidate()
             hideTimer.invalidate()
             
+            if score > highScore {
+                highScore = score
+                highScoreLabel.text = "High Score: \(highScore)"
+                
+                UserDefaults.standard.set(highScore, forKey: highScoreKey)
+            }
             
             
             //            MARK: Alert
@@ -162,6 +185,7 @@ class ViewController: UIViewController {
         alert.addAction(ok)
         alert.addAction(replay)
 
+        
         
         
         self.present(alert, animated: true)
