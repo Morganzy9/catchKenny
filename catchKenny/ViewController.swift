@@ -8,22 +8,23 @@
 import UIKit
 
 class ViewController: UIViewController {
-
+    
     @IBOutlet var timeLeftLabel: UILabel!
     @IBOutlet var scoreLabel: UILabel!
     @IBOutlet var highScoreLabel: UILabel!
     
-    @IBOutlet var kennyImageOne: UIImageView!
-    @IBOutlet var kennyImageTwo: UIImageView!
-    @IBOutlet var kennyImageThree: UIImageView!
-    @IBOutlet var kennyImageFour: UIImageView!
-    @IBOutlet var kennyImageFive: UIImageView!
-    @IBOutlet var kennyImageSix: UIImageView!
-    @IBOutlet var kennyImageSeven: UIImageView!
-    @IBOutlet var kennyImageEight: UIImageView!
-    @IBOutlet var kennyImageNine: UIImageView!
+    @IBOutlet var kenny1: UIImageView!
+    @IBOutlet var kenny2: UIImageView!
+    @IBOutlet var kenny3: UIImageView!
+    @IBOutlet var kenny4: UIImageView!
+    @IBOutlet var kenny5: UIImageView!
+    @IBOutlet var kenny6: UIImageView!
+    @IBOutlet var kenny7: UIImageView!
+    @IBOutlet var kenny8: UIImageView!
+    @IBOutlet var kenny9: UIImageView!
     
     var timer = Timer()
+    @objc var hideTimer = Timer()
     var counter = 0
     var score = 0
     var highScore = 0
@@ -40,46 +41,45 @@ class ViewController: UIViewController {
     func setUppViewLogic() {
         
         scoreLabel.text = "Score: \(score)"
-        highScoreLabel.text = "High Score \(highScore)"
         
-        kennyArr = [kennyImageOne, kennyImageTwo, kennyImageThree, kennyImageFour, kennyImageFive, kennyImageSix, kennyImageSeven, kennyImageEight, kennyImageNine]
+        kenny1.isUserInteractionEnabled = true
+        kenny2.isUserInteractionEnabled = true
+        kenny3.isUserInteractionEnabled = true
         
-        kennyImageOne.isUserInteractionEnabled = true
-        kennyImageTwo.isUserInteractionEnabled = true
-        kennyImageThree.isUserInteractionEnabled = true
+        kenny4.isUserInteractionEnabled = true
+        kenny5.isUserInteractionEnabled = true
+        kenny6.isUserInteractionEnabled = true
         
-        kennyImageFour.isUserInteractionEnabled = true
-        kennyImageFive.isUserInteractionEnabled = true
-        kennyImageSix.isUserInteractionEnabled = true
+        kenny7.isUserInteractionEnabled = true
+        kenny8.isUserInteractionEnabled = true
+        kenny9.isUserInteractionEnabled = true
         
-        kennyImageSeven.isUserInteractionEnabled = true
-        kennyImageEight.isUserInteractionEnabled = true
-        kennyImageNine.isUserInteractionEnabled = true
+        let recognizer1 = UITapGestureRecognizer(target: self, action: #selector(increaseScore))
+        let recognizer2 = UITapGestureRecognizer(target: self, action: #selector(increaseScore))
+        let recognizer3 = UITapGestureRecognizer(target: self, action: #selector(increaseScore))
         
+        let recognizer4 = UITapGestureRecognizer(target: self, action: #selector(increaseScore))
+        let recognizer5 = UITapGestureRecognizer(target: self, action: #selector(increaseScore))
+        let recognizer6 = UITapGestureRecognizer(target: self, action: #selector(increaseScore))
         
-        let recognizer1 = UIGestureRecognizer(target: self, action: #selector(increaseScore))
-        let recognizer2 = UIGestureRecognizer(target: self, action: #selector(increaseScore))
-        let recognizer3 = UIGestureRecognizer(target: self, action: #selector(increaseScore))
+        let recognizer7 = UITapGestureRecognizer(target: self, action: #selector(increaseScore))
+        let recognizer8 = UITapGestureRecognizer(target: self, action: #selector(increaseScore))
+        let recognizer9 = UITapGestureRecognizer(target: self, action: #selector(increaseScore))
         
-        let recognizer4 = UIGestureRecognizer(target: self, action: #selector(increaseScore))
-        let recognizer5 = UIGestureRecognizer(target: self, action: #selector(increaseScore))
-        let recognizer6 = UIGestureRecognizer(target: self, action: #selector(increaseScore))
+        kenny1.addGestureRecognizer(recognizer1)
+        kenny2.addGestureRecognizer(recognizer2)
+        kenny3.addGestureRecognizer(recognizer3)
         
-        let recognizer7 = UIGestureRecognizer(target: self, action: #selector(increaseScore))
-        let recognizer8 = UIGestureRecognizer(target: self, action: #selector(increaseScore))
-        let recognizer9 = UIGestureRecognizer(target: self, action: #selector(increaseScore))
+        kenny4.addGestureRecognizer(recognizer4)
+        kenny5.addGestureRecognizer(recognizer5)
+        kenny6.addGestureRecognizer(recognizer6)
         
-        kennyImageOne.addGestureRecognizer(recognizer1)
-        kennyImageTwo.addGestureRecognizer(recognizer2)
-        kennyImageThree.addGestureRecognizer(recognizer3)
+        kenny7.addGestureRecognizer(recognizer7)
+        kenny8.addGestureRecognizer(recognizer8)
+        kenny9.addGestureRecognizer(recognizer9)
         
-        kennyImageFour.addGestureRecognizer(recognizer4)
-        kennyImageFive.addGestureRecognizer(recognizer5)
-        kennyImageSix.addGestureRecognizer(recognizer6)
+        kennyArr = [kenny1, kenny2, kenny3, kenny4, kenny5, kenny6, kenny7, kenny8, kenny9]
         
-        kennyImageSeven.addGestureRecognizer(recognizer7)
-        kennyImageEight.addGestureRecognizer(recognizer8)
-        kennyImageNine.addGestureRecognizer(recognizer9)
         
         
 //        MARK: Timer
@@ -89,6 +89,22 @@ class ViewController: UIViewController {
         timeLeftLabel.text = "Time left: \(counter)"
         
         timer = Timer.scheduledTimer(timeInterval: 1, target: self, selector: #selector(countDown), userInfo: nil, repeats: true)
+        
+        hideTimer = Timer.scheduledTimer(timeInterval: 0.5, target: self, selector: #selector(hideKenny), userInfo: nil, repeats: true)
+        
+        hideKenny()
+        
+    }
+    
+    @objc func hideKenny() {
+        
+        for kenny in kennyArr {
+            kenny.isHidden = true
+        }
+        
+        
+        let randomKenny = Int(arc4random_uniform(UInt32(kennyArr.count - 1)))
+        kennyArr[randomKenny].isHidden = false
         
     }
     
@@ -109,10 +125,13 @@ class ViewController: UIViewController {
         if counter == 0 {
             
             timer.invalidate()
+            hideTimer.invalidate()
             
-//            MARK: Alert
             
-//            makeAlert(title: "", message: )
+            
+            //            MARK: Alert
+            
+            makeAlert(title: "Time`s up!", message: "Do you want to play again?")
             
         }
         
@@ -121,19 +140,35 @@ class ViewController: UIViewController {
     
     func makeAlert(title: String, message: String) {
         
-        var alert  = UIAlertController(title: title , message: message , preferredStyle: .alert)
+        let alert  = UIAlertController(title: title , message: message , preferredStyle: UIAlertController.Style.alert)
         
         let ok = UIAlertAction(title: "Ok", style: .default)
-        let cancel = UIAlertAction(title: "Cancel", style: .cancel)
+        
+        let replay = UIAlertAction(title: "Replay", style: .default) { UIAlertAction in
+            
+            self.score = 0
+            self.scoreLabel.text = "Score: \(self.score)"
+            
+            self.counter = 10
+            self.timeLeftLabel.text = "Time left: \(self.counter)"
+            
+            
+            self.timer = Timer.scheduledTimer(timeInterval: 1, target: self, selector: #selector(self.countDown), userInfo: nil, repeats: true)
+            self.hideTimer = Timer.scheduledTimer(timeInterval: 0.5, target: self, selector: #selector(self.hideKenny), userInfo: nil, repeats: true)
+            
+            
+        }
         
         alert.addAction(ok)
-        alert.addAction(cancel)
+        alert.addAction(replay)
+
+        
         
         self.present(alert, animated: true)
         
         
     }
-
-
+    
+    
 }
 

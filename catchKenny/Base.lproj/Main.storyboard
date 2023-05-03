@@ -19,14 +19,14 @@
                             <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" spacing="31" translatesAutoresizingMaskIntoConstraints="NO" id="dZF-a5-zpc">
                                 <rect key="frame" x="144.33333333333334" y="58.999999999999993" width="104.66666666666666" height="126.33333333333331"/>
                                 <subviews>
-                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" ambiguous="YES" text="Time left: " lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="nIF-kU-7MB">
-                                        <rect key="frame" x="0.0" y="0.0" width="104.66666666666667" height="65.333333333333329"/>
+                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="252" text="Time left: " lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="nIF-kU-7MB">
+                                        <rect key="frame" x="0.0" y="0.0" width="104.66666666666667" height="30"/>
                                         <fontDescription key="fontDescription" type="system" pointSize="25"/>
                                         <nil key="textColor"/>
                                         <nil key="highlightedColor"/>
                                     </label>
-                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" ambiguous="YES" text="Score:" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="yAF-5R-J0O">
-                                        <rect key="frame" x="0.0" y="96.333333333333343" width="104.66666666666667" height="30"/>
+                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Score:" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="yAF-5R-J0O">
+                                        <rect key="frame" x="0.0" y="60.999999999999993" width="104.66666666666667" height="65.333333333333314"/>
                                         <fontDescription key="fontDescription" type="system" pointSize="25"/>
                                         <nil key="textColor"/>
                                         <nil key="highlightedColor"/>
@@ -120,15 +120,15 @@
                     </view>
                     <connections>
                         <outlet property="highScoreLabel" destination="725-zd-yl9" id="m9Z-Mg-YH5"/>
-                        <outlet property="kennyImageEight" destination="xjz-2N-UAu" id="VwM-nq-tjL"/>
-                        <outlet property="kennyImageFive" destination="MkP-zi-hFT" id="7wd-eN-1MW"/>
-                        <outlet property="kennyImageFour" destination="0cX-b9-t6e" id="b4V-PM-jA7"/>
-                        <outlet property="kennyImageNine" destination="ppu-Jf-LMw" id="KmE-xZ-rdC"/>
-                        <outlet property="kennyImageOne" destination="1Wz-xK-rjb" id="7WL-Pd-zE6"/>
-                        <outlet property="kennyImageSeven" destination="QBr-qQ-gnT" id="pBw-aF-LxO"/>
-                        <outlet property="kennyImageSix" destination="7bv-RB-8Lq" id="lXz-gU-QWQ"/>
-                        <outlet property="kennyImageThree" destination="Wbm-iU-ASK" id="E7q-R1-Zoa"/>
-                        <outlet property="kennyImageTwo" destination="SCQ-Lk-l83" id="bcx-2Q-6Dw"/>
+                        <outlet property="kenny1" destination="1Wz-xK-rjb" id="7WL-Pd-zE6"/>
+                        <outlet property="kenny2" destination="SCQ-Lk-l83" id="bcx-2Q-6Dw"/>
+                        <outlet property="kenny3" destination="Wbm-iU-ASK" id="E7q-R1-Zoa"/>
+                        <outlet property="kenny4" destination="0cX-b9-t6e" id="b4V-PM-jA7"/>
+                        <outlet property="kenny5" destination="MkP-zi-hFT" id="7wd-eN-1MW"/>
+                        <outlet property="kenny6" destination="7bv-RB-8Lq" id="lXz-gU-QWQ"/>
+                        <outlet property="kenny7" destination="QBr-qQ-gnT" id="pBw-aF-LxO"/>
+                        <outlet property="kenny8" destination="xjz-2N-UAu" id="VwM-nq-tjL"/>
+                        <outlet property="kenny9" destination="ppu-Jf-LMw" id="KmE-xZ-rdC"/>
                         <outlet property="scoreLabel" destination="yAF-5R-J0O" id="Uzr-6C-R1Y"/>
                         <outlet property="timeLeftLabel" destination="nIF-kU-7MB" id="A4G-KA-Ae5"/>
                     </connections>
